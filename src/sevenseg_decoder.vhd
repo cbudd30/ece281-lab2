@@ -59,6 +59,8 @@ begin
             not "1111001" when "1110",
             not "1110001" when "1111",
             "0000000" when others;
+            
+           
 
 
 end Behavioral;
