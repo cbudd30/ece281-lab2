@@ -42,7 +42,6 @@ architecture Behavioral of sevenseg_decoder_tb is
     end component sevenseg_decoder;
     
     signal sw : std_logic_vector(3 downto 0);
-    signal o_seg_n : std_logic_vector(6 downto 0);
     signal seg : std_logic_vector(6 downto 0);
     
    begin
@@ -60,26 +59,23 @@ architecture Behavioral of sevenseg_decoder_tb is
     
     test_process : process 
 	begin
-        -- Octal test cases based on full adder truth table
-        -- https://usafa-ece.github.io/ece281-book/ICE/ICE3.html#full-adder-truth
         sw <= o"0"; wait for 10 ns;
-            assert seg = "1111110" report "Error on input o0" severity failure;
+            assert seg = not "1111110" report "Error on input o0" severity failure;
         sw <= "0001"; wait for 10 ns;
-            assert seg = "0110000" report "Error on input o1" severity failure;
+            assert seg = not "0110000" report "Error on input o1" severity failure;
         sw <= "0010"; wait for 10 ns;
-            assert seg = "1101101" report "Error on input o2" severity failure;
+            assert seg = not "1101101" report "Error on input o2" severity failure;
         sw <= "0011"; wait for 10 ns;
-            assert seg = "1111001" report "Error on input o3" severity failure;
+            assert seg = not "1111001" report "Error on input o3" severity failure;
         sw <= "0100"; wait for 10 ns;
-            assert seg = "0110011" report "Error on input o4" severity failure;
+            assert seg = not "0110011" report "Error on input o4" severity failure;
         sw <= "1000"; wait for 10 ns;
-            assert seg = "1111111" report "Error on input o7" severity failure; 
+            assert seg = not "1111111" report "Error on input o8" severity failure; 
         sw <= "1001"; wait for 10 ns;
-            assert seg = "1110011" report "Error on input o7" severity failure;                                         
+            assert seg = not "1110011" report "Error on input oA" severity failure;                                         
                                 
 		wait; -- wait forever
 		
 	end process;
-
 
 end Behavioral;
