@@ -59,7 +59,7 @@ architecture Behavioral of sevenseg_decoder_tb is
     
     test_process : process 
 	begin
-        sw <= o"0"; wait for 10 ns;
+        sw <= o"0000"; wait for 10 ns;
             assert seg = not "1111110" report "Error on input o0" severity failure;
         sw <= "0001"; wait for 10 ns;
             assert seg = not "0110000" report "Error on input o1" severity failure;
